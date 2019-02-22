@@ -5,7 +5,7 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you <%= current_user.email %> for your order!</h4>
   </div>
 
    <div class="panel panel-default items">
@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        
+
       <% @order.line_items.each do |val| %>
           <% @full_item = Product.find(val.product_id)  %>
           <% @total_cost = 0 %>
@@ -30,7 +30,7 @@
             <td><%= @full_item.price %></td>
             <td><%= val.quantity %></td>
             <td><%= val.quantity * @full_item.price %></td>
-          </tr>  
+          </tr>
       <% end %>
       </tbody>
       <tfoot>
