@@ -7,10 +7,14 @@ class OrdersController < ApplicationController
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
+    @user ||= User.find(session[:user_id])
 
     if order.valid?
-      empty_cart! 
+      empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
+      # raise @current_user.inspect
+      UserMailer.order_email(@user).deliver_now
+      #format.html { redirect_to :root}
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
