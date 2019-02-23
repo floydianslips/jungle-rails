@@ -6,6 +6,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @rating = Rating.where(product_id: @product.id).reverse
   end
 
+  
+
+  private
+
+ 
 end

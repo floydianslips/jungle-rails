@@ -25,6 +25,54 @@
         </dl>
       </div>
     </div>
+   
+
+    <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+    
+      <%= form_for [@product, @product.rating.build] do |form| %>
+
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+          <%= form.select(:rating, [1, 2, 3, 4, 5]) %> 
+
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_field :description, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Create Review', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+    <div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rating</th>
+      <th scope="col">Review</th>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  
+
+      <% if @rating %>
+      <% @rating.each do |desc| %>
+      <%= render 'product_review', description: desc[:description], date: desc[:created_at].strftime("%B %d, %Y"), name: User.find(session[:user_id]).first_name, rating: desc[:rating] %>
+      <% end %>
+      <% end %>
+      </table>
+    <div>
 
   </article>
 
