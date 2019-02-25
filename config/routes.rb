@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   end
   
   resources :categories, only: [:show]
-
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
+  resources :users
+    get '/signup' => 'users#new'
+    post '/users' => 'users#create'
+  
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
