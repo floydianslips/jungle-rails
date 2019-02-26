@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   cat = Category.new
   subject {
-    described_class.new(name: "Boogers", price_cents: 30, quantity: 120, category: cat)
+    described_class.new(name: "Boogers", price: 30, quantity: 120, category: cat)
   }  
 
   describe 'Validations' do

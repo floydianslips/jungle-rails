@@ -28,14 +28,14 @@ User.create!({
   first_name:'tim',
   last_name: 'tim',
   email: 'tim',
-  password: 'tim'
+  password: 'timtim'
 })
 
 User.create!({
   first_name:'jim',
   last_name: 'jim',
   email: 'jim',
-  password: 'jim'
+  password: 'jimjim'
 })
 
 ## CATEGORIES
