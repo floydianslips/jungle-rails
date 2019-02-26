@@ -18,11 +18,6 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
     end
 
-    # it 'is not valid without a password confirmation' do
-    #   subject.password_confirmation = nil
-    #   expect(subject).to_not be_valid
-    # end
-
     it 'repeated email cannot be put into the database' do
       subject.save
       user2.email = "billy@dakid.com"
@@ -39,9 +34,26 @@ RSpec.describe User, type: :model do
       subject.password = "poop"
       expect(subject).to_not be_valid
     end
-
-
   end
 
+    it "is not valid to have an email without @ or ." do
+      subject.email = "jim"
+      expect(subject).to_not be_valid
+    end
+  
+  describe '.authenticate_with_credentials' do
+    # examples for this class method here
+    it "will not log in without proper authentication" do
+      subject.save
+      subject.password = "nottherightpassword"
+      expect(User.authenticate_with_credentials(subject.email, subject.password)).to be_falsey
+    end
+
+    it "will allow whitespace before and after login" do
+      subject.save
+      subject.email = "    billy@dakid.com"
+      expect(User.authenticate_with_credentials(subject.email, subject.password)).to be_truthy
+    end
+  end
 end
 

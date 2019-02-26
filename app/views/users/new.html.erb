@@ -30,7 +30,7 @@
 
         <div class="form-group">
           <%= form.label :email %>
-          <%= form.text_field :email, class: 'form-control' %>
+          <%= form.email_field :email, class: 'form-control', pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" %>
         </div>
         
         <div class="form-group">
