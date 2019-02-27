@@ -27,14 +27,14 @@ puts "Finding or creating Users...."
 User.create!({
   first_name:'tim',
   last_name: 'tim',
-  email: 'tim',
+  email: 'tim@tim.com',
   password: 'timtim'
 })
 
 User.create!({
   first_name:'jim',
   last_name: 'jim',
-  email: 'jim',
+  email: 'jim@jim.com',
   password: 'jimjim'
 })
 

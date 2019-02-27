@@ -49,10 +49,10 @@ end
 
 group :test do
   # ...more stuff here
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda'
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'faker'
 end
 
 group :development do
